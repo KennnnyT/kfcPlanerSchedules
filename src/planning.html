@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>planning</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="./stylePlanning.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  </head>
+  <body>
+    <div id="planning">
+      <h1>Votre Planning de la Semaine</h1>
+      <form>
+        <input type="text" id="employeeId" placeholder="Entrez votre ID">
+        <button id="submitButton">Voir mon planning</button>
+      </form>
+      <div id="scheduleContainer"></div>
+      <table id="planningTable">
+        <tr>
+          <th>Jour</th>
+          <th>Heures</th>
+        </tr>
+      </table>
+    </div>
+    <script src="./script.js"></script>
+    <?php include "getSchedule.php"; ?>
+
+
+    
+  </body>
+</html>

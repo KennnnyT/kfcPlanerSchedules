@@ -1,0 +1,67 @@
+
+  <body>
+    <div class="center">
+      <h1>Bienvenue sur KFC Nord Staff Planner</h1>
+      <h2>votre planning en un clic</h2>
+    </div>
+    <script src="script.js"></script>
+  </body>
+
+
+  body, h1, h2 {
+    font-family: "SF Pro Text", sans-serif;
+  }
+  
+  
+  
+  /* Centrer les éléments dans la page */
+  .center {
+    display: block;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 300px;
+  }
+  
+  h1{
+    font-family: "SF Pro Text";
+  
+  }
+  h2{
+    font-family: "SF Pro Text";
+  }
+  
+  h1, h2 {
+    font-family: "SF Pro Text", sans-serif;
+  }
+  $(document).ready(function() {
+    $("#submitButton").click(function(e) {
+      e.preventDefault();
+      let employeeId = $("#employeeId").val();
+  
+      $.ajax({
+        type: "GET",
+        url: "getSchedule.php",
+        data: { employeeId: employeeId },
+        dataType: "json",
+        success: function(schedule) {
+          let table = $("#planningTable");
+          table.find("tr:gt(0)").remove();
+  
+          for (let i in schedule) {
+            let day = schedule[i]["day"];
+            let hours = schedule[i]["hours"];
+            let row = $("<tr><td>" + day + "</td><td>" + hours + "</td></tr>");
+            table.append(row);
+          }
+        },
+        error: function() {
+          alert("ID incorrect");
+        }
+      });
+    });
+  });
+  
+  
+  
+  
